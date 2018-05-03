@@ -1,0 +1,7 @@
+#!/bin/bash
+
+exec st docker run --rm -it -e DISPLAY=$DISPLAY \
+                   -v /tmp/.X11-unix:/tmp/.X11-unix \
+                   -v /home/robin/oracle/home:/home/robin \
+                   --network=host \
+                   tmux
