@@ -2,7 +2,7 @@ FROM oraclelinux:7-slim
 RUN useradd -u 210337 robin
 RUN yum install -y firefox
 RUN yum -y install http://linuxdownload.adobe.com/linux/x86_64//adobe-release-x86_64-1.0-1.noarch.rpm && \
-    yum install -y flash-plugin alsa-plugins-pulseaudio libcurl dbus
+    yum install -y flash-plugin alsa-plugins-pulseaudio libcurl dbus adwaita-gtk2-theme
 COPY local.conf /etc/fonts/local.conf
 RUN mkdir /var/run/dbus/
 RUN chown robin /var/run/dbus
