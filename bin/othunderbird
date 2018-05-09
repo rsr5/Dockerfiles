@@ -2,6 +2,6 @@
 
 exec docker run --rm -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
-                -v /home/robin/oracle/home:/home/robin \
+                -v /home/oracle:/home/robin \
                 --network=host \
                 thunderbird -no-remote
