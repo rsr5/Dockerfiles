@@ -1,3 +1,10 @@
 #!/bin/bash
 
-for ip in `ip addr | grep "inet " | awk '{print $2}' | sed 's/\/.*$//g' | grep "^10" `; do getent hosts $ip; done;
+ips=$(ip addr | grep "inet " | awk '{print $2}' | sed 's/\/.*$//g' | grep "^10")
+
+names=""
+for ip in $ips; do
+  names=$name$(getent hosts $ip);
+done;
+
+echo $names | zenity --width 600 --text-info 2> /dev/null &
