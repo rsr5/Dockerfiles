@@ -1,13 +1,15 @@
 FROM oraclelinux:7-slim
 RUN useradd -u 210337 robin
 COPY yum.conf /etc/yum.conf
-COPY vim8.repo /etc/yum.repos.d/vim8.repo
+COPY vim8.repo /etc/yum.repos.d/
+COPY flatcap-neomutt-epel-7.repo /etc/yum.repos.d/
 
 RUN yum install -y --enablerepo mcepl-vim8 \
                    --enablerepo ol7_developer_nodejs8 \
                    --enablerepo ol7_developer_EPEL \
+                   --enablerepo flatcap-neomutt \
                 tmux vim zsh util-linux git openssh nodejs man man-pages wget \
-                gcc python-devel bzip2 tree python2-pip tree
+                gcc python-devel bzip2 tree python2-pip tree neomutt
 
 RUN pip install -U pip flake8 flake8-colors flake8-comprehensions flake8-docstrings \
                 flake8-import-order pep8-naming==0.5.0
