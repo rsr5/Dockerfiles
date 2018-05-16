@@ -19,8 +19,15 @@ RUN wget -O /usr/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/
 RUN npm install -g jshint
 RUN npm install -g @oracle/ojet-cli@4.0.0
 RUN chsh -s /usr/bin/zsh robin
+
+ARG http_proxy
+ENV http_proxy ${http_proxy}
+ARG https_proxy
+ENV https_proxy ${http_proxy}
+
 ENV LANG en_GB.utf8
 ENV TERM xterm-256color
 ENV DEFAULT_USER robin
+
 USER robin
 ENTRYPOINT [ "/usr/bin/tmux", "-u" ]
