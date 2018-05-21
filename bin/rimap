@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run --rm -d -it -v /home/robin:/home/robin --name rimap offlineimap
