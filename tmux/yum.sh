@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xe
 
 yum install -y --enablerepo mcepl-vim8 \
                --enablerepo ol7_developer_nodejs8 \
