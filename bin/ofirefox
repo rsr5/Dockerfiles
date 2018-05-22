@@ -5,4 +5,5 @@ exec docker run --rm -e DISPLAY=$DISPLAY \
                 -v /home/oracle:/home/robin \
                 --network=host \
                 --shm-size 2g \
+                --name ofirefox \
                 firefox
