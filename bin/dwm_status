@@ -2,7 +2,6 @@
 exec docker run -d -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
                 -v /home/robin:/home/robin \
-                -v /home/robin:/home/robin \
                 -v /var/run/key_presses:/var/run/key_presses \
                 --restart=unless-stopped \
                 dwm_status
