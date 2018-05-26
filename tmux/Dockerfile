@@ -1,7 +1,7 @@
 ARG image
 FROM ${image}
 
-RUN useradd -u 210337 robin
+RUN useradd -u 210337 -G 9999 robin
 COPY yum.conf /etc/yum.conf
 
 COPY repos.d/* /etc/yum.repos.d/
