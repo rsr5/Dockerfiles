@@ -1,0 +1,29 @@
+version: '3'
+services:
+  dwm_status:
+    build: dwm_status
+    image: dwm_status
+  firefox:
+    build: firefox
+    image: firefox
+  offlineimap:
+    build: offlineimap
+    image: offlineimap
+  ping:
+    build: ping
+    image: ping
+  public_html:
+    build: public_html
+    image: public_html
+  thunderbird:
+    build: thunderbird
+    image: thunderbird
+  tmux:
+    build:
+      context: tmux
+      args:
+        image: dx-emulator-environment
+    image: tmux
+  xterm:
+    build: xterm
+    image: xterm
