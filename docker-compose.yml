@@ -27,3 +27,13 @@ services:
   xterm:
     build: xterm
     image: xterm
+  ympd:
+    build: ympd
+    image: ympd
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+    container_name: ympd
+    volumes:
+      - /var/lib/mpd/socket:/var/lib/mpd
+    command: ympd -h /var/lib/mpd
