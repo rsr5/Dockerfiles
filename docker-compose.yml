@@ -37,3 +37,12 @@ services:
     volumes:
       - /var/lib/mpd/socket:/var/lib/mpd
     command: ympd -h /var/lib/mpd
+  key_presses:
+    build: key_presses
+    image: key_presses
+    restart: unless-stopped
+    container_name: key_presses
+    volumes:
+      - /var/run/key_presses/:/var/run/key_presses/
+    devices:
+      - /dev/dtrace
