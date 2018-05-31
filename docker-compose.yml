@@ -37,6 +37,9 @@ services:
     volumes:
       - /var/lib/mpd/socket:/var/lib/mpd
     command: ympd -h /var/lib/mpd
+  dtrace:
+    build: dtrace
+    image: dtrace
   key_presses:
     build: key_presses
     image: key_presses
@@ -46,6 +49,8 @@ services:
       - /var/run/key_presses/:/var/run/key_presses/
     devices:
       - /dev/dtrace
+    depends_on:
+      - dtrace
   graphite:
     build: graphite
     image: graphite
