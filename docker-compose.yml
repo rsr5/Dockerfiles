@@ -51,6 +51,18 @@ services:
       - /dev/dtrace
     depends_on:
       - dtrace
+  media_keys:
+    build: media_keys
+    image: media_keys
+    restart: unless-stopped
+    container_name: media_keys
+    volumes:
+      - /home/robin/.mplayer:/mplayer
+    devices:
+      - /dev/dtrace
+    depends_on:
+      - dtrace
+
   graphite:
     build: graphite
     image: graphite

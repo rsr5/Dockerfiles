@@ -1,12 +1,12 @@
 #!/bin/bash -e
 
-FIFO="/tmp/mplayer_fifo-$BASHPID";
+FIFO="/home/robin/.mplayer/mplayer_fifo";
 IFS=$'\n';
 
 function finish {
   rm -f "$FIFO";
 }
-trap finish EXIT
+# trap finish EXIT
 
 
 if [ ! -f "$FIFO" ]; then
