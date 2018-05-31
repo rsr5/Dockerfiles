@@ -33,6 +33,12 @@ profile:::tick-995ms
 }
 
 profile:::tick-1s
+{
+  fmt = "+%s";
+  system("echo robr.xyz.key_presses %d `date %s`| nc 172.17.0.1 2003", keypresses, fmt);
+}
+
+profile:::tick-1s
 / 
   ((walltimestamp / 1000000000) % 60) == 59 && /* seconds */
   (((walltimestamp / 1000000000) % 3600) / 60) == 59 &&  /* minutes */
