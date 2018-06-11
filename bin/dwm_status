@@ -4,4 +4,5 @@ exec docker run -d -e DISPLAY=$DISPLAY \
                 -v /home/robin:/home/robin \
                 -v /var/run/key_presses:/var/run/key_presses \
                 --restart=unless-stopped \
+                --name dwm_status \
                 dwm_status
