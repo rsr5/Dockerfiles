@@ -15,10 +15,12 @@ RUN pip install -U pip flake8 flake8-colors flake8-comprehensions flake8-docstri
 
 RUN wget -O /usr/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
     chmod 755 /usr/bin/jq
-RUN npm i npm@latest -g
-RUN npm install -g jshint
-RUN npm install -g @oracle/ojet-cli@4.0.0
+RUN npm i npm@latest -g && npm install -g jshint && npm install -g @oracle/ojet-cli@4.0.0
 RUN chsh -s /usr/bin/zsh robin
+
+RUN wget -O /usr/bin/dumb-init \
+         https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 && \
+         chmod 755 /usr/bin/dumb-init
 
 ENV LANG en_GB.utf8
 ENV TERM xterm-256color
@@ -26,4 +28,5 @@ ENV DEFAULT_USER robin
 
 RUN echo 'robin         ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers
 USER robin
-ENTRYPOINT [ "/usr/bin/tmux", "-u" ]
+ENTRYPOINT [ "/usr/bin/dumb-init", "-c", "--" ]
+CMD [ "/usr/bin/tmux", "-u" ]
