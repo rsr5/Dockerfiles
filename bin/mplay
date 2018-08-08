@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
 FIFO="/home/robin/.mplayer/mplayer_fifo";
 IFS=$'\n';
@@ -9,7 +9,7 @@ function finish {
 # trap finish EXIT
 
 
-if [ ! -f "$FIFO" ]; then
+if [ ! -p "$FIFO" ]; then
   mkfifo $FIFO;
 fi
 
