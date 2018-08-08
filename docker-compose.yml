@@ -3,6 +3,16 @@ services:
   dwm_status:
     build: dwm_status
     image: dwm_status
+    restart: unless-stopped
+    container_name: dwm_status
+    links:
+      - mqtt
+    environment:
+      DISPLAY:
+    volumes:
+      - "/tmp/.X11-unix:/tmp/.X11-unix"
+      - "/home/robin:/home/robin"
+      - "/var/run/key_presses:/var/run/key_presses"
   firefox:
     build: firefox
     image: firefox
@@ -62,7 +72,15 @@ services:
       - /dev/dtrace
     depends_on:
       - dtrace
-
+      - mqtt
+  mqtt:
+    build: mqtt
+    image: mqtt
+    restart: unless-stopped
+    container_name: mqtt
+    ports:
+      - "127.0.0.1:1883:1883"
+      - "127.0.0.1:9001:9001"
   graphite:
     build: graphite
     image: graphite

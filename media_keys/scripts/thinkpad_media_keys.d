@@ -26,7 +26,8 @@ fbt:vmlinux:input_event:entry
   arg2 == play
 /
 {
-  system("echo pause > /mplayer/mplayer_fifo")
+  system("python /root/message.py topic/message 'Play / Pause'");
+  system("echo pause > /mplayer/mplayer_fifo");
 }
 
 fbt:vmlinux:input_event:entry
@@ -36,6 +37,7 @@ fbt:vmlinux:input_event:entry
   arg2 == volup
 /
 {
+  system("python /root/message.py topic/message 'Volume ++'");
   system("echo volume 10 > /mplayer/mplayer_fifo")
 }
 
@@ -46,6 +48,7 @@ fbt:vmlinux:input_event:entry
   arg2 == voldn
 /
 {
+  system("python /root/message.py topic/message 'Volume --'");
   system("echo volume -10 > /mplayer/mplayer_fifo")
 }
 /*

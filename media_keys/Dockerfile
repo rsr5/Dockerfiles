@@ -1,7 +1,11 @@
 FROM dtrace
 MAINTAINER Robin Ridler <robin.ridler@gmail.com>
 
-RUN yum install -y nmap-ncat wget && mkdir /root/events.d
+RUN yum install -y --enablerepo ol7_developer_EPEL \
+                   nmap-ncat \
+                   python-paho-mqtt \
+                   wget && \
+    mkdir /root/events.d
 
 RUN wget -O /usr/bin/dumb-init \
          https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 && \
@@ -9,6 +13,7 @@ RUN wget -O /usr/bin/dumb-init \
 
 COPY scripts/*.d /root/events.d/
 COPY scripts/rund.sh /root/
+COPY scripts/message.py /root/
 
 ENTRYPOINT [ "/usr/bin/dumb-init", "-c", "--" ]
 CMD [ "/root/rund.sh" ]
