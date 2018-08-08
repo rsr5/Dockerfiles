@@ -12,4 +12,4 @@ RUN chown robin /var/run/dbus
 ENV LANG en-GB
 ENV PULSE_SERVER tcp:127.0.0.1:4713
 USER robin
-CMD /usr/bin/dbus-daemon --system --fork && /usr/bin/firefox -no-remote
+CMD /usr/bin/dbus-daemon --system --fork && /usr/bin/firefox -no-remote -P
