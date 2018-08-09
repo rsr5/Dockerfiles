@@ -15,5 +15,7 @@ COPY scripts/*.d /root/events.d/
 COPY scripts/rund.sh /root/
 COPY scripts/message.py /root/
 
+ENV LANG en-GB.UTF8
+
 ENTRYPOINT [ "/usr/bin/dumb-init", "-c", "--" ]
 CMD [ "/root/rund.sh" ]

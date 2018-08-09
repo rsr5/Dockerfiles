@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xe
 
 sw=$(xdpyinfo | awk -F '[ x]+' '/dimensions:/{print $3}');
 sh=$(xdpyinfo | awk -F '[ x]+' '/dimensions:/{print $4}');

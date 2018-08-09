@@ -7,8 +7,6 @@ string keyboard;
 int direction;
 
 BEGIN {
-  /* Change to the name of your keyboard */
-  keyboard = "Wootpatoot Lets Split v2";
   /* which direction to count, 1 for down and 0 for up. */
   direction = 1;
 
@@ -26,7 +24,7 @@ fbt:vmlinux:input_event:entry
   arg2 == play
 /
 {
-  system("python /root/message.py topic/message 'Play / Pause'");
+  system("python /root/message.py topic/message '^fn(Font Awesome 5 Free Solid) / ^fn() (Play / Pause)'");
   system("echo pause > /mplayer/mplayer_fifo");
 }
 
@@ -37,7 +35,7 @@ fbt:vmlinux:input_event:entry
   arg2 == volup
 /
 {
-  system("python /root/message.py topic/message 'Volume ++'");
+  system("python /root/message.py topic/message '^fn(Font Awesome 5 Free Solid)^fn() (Volume ++)'");
   system("echo volume 10 > /mplayer/mplayer_fifo")
 }
 
@@ -48,7 +46,7 @@ fbt:vmlinux:input_event:entry
   arg2 == voldn
 /
 {
-  system("python /root/message.py topic/message 'Volume --'");
+  system("python /root/message.py topic/message '^fn(Font Awesome 5 Free Solid)^fn() (Volume --)'");
   system("echo volume -10 > /mplayer/mplayer_fifo")
 }
 /*

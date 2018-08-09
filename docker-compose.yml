@@ -61,6 +61,8 @@ services:
       - /dev/dtrace
     depends_on:
       - dtrace
+    links:
+      - graphite
   media_keys:
     build: media_keys
     image: media_keys

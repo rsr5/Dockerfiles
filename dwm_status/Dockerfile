@@ -13,8 +13,8 @@ RUN apt-get update && \
       x11-utils \
       dzen2 \
       fonts-powerline \
-      fonts-font-awesome \
       tzdata \
+      unzip \
       python-pip python-dev build-essential && \
       dpkg-reconfigure --frontend noninteractive tzdata
 
@@ -37,16 +37,20 @@ ADD scripts/countdown.py /bin/countdown.py
 ADD scripts/status.sh /bin/status.sh
 ADD scripts/server.py /bin/server.py
 ADD scripts/dzen2_popup.sh /bin/dzen2_popup.sh
+ADD scripts/install_fonts.sh /bin/install_fonts.sh
 RUN chmod 755 /bin/*.sh /bin/*.py
 
 # Configure the locales for dzen2
-ENV LANG en-GB.UTF8
-ENV LANGUAGE en-GB.UTF8
-ENV LC_ALL en-GB.UTF8
+ENV LANG en_GB.UTF8
+ENV LANGUAGE en_GB.UTF8
+ENV LC_ALL en_GB.UTF8
 ENV TZ Europe/London
+
+RUN /bin/install_fonts.sh
 
 # Run as me.
 USER robin
+
 
 ENTRYPOINT [ "/usr/bin/dumb-init", "-c", "--" ]
 CMD [ "/bin/status.sh" ]

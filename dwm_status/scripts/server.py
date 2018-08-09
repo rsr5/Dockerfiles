@@ -1,3 +1,4 @@
+from base64 import b64decode
 from subprocess import Popen
 
 import paho.mqtt.client as mqtt
@@ -12,10 +13,12 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
+    print repr(b64decode(msg.payload))
+    print b64decode(msg.payload)
     Popen(
         [
             '/bin/dzen2_popup.sh',
-            msg.payload.decode('utf-8')
+            b64decode(msg.payload)
         ]
     ).communicate()
 
