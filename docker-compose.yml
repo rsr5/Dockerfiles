@@ -12,6 +12,7 @@ services:
     volumes:
       - "/tmp/.X11-unix:/tmp/.X11-unix"
       - "/home/robin:/home/robin"
+      - "/home/robin/code/dotfiles/.conkydwmstatus:/home/robin/.conkydwmstatus"
       - "/var/run/key_presses:/var/run/key_presses"
   firefox:
     build: firefox

@@ -7,7 +7,7 @@ fi
 # Start the mqtt server that listens for messages that should be sent to dzen2
 python /bin/server.py &
 
-conky -c ~/.conkydwmrcnew | \
+conky -c ~/.conkydwmstatus | \
 dzen2 -w 1400 \
       -bg '#222222' \
       -ta r \
