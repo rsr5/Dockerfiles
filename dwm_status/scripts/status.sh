@@ -8,9 +8,9 @@ fi
 python /bin/server.py &
 
 conky -c ~/.conkydwmrcnew | \
-dzen2 -w 1200\
-      -ta r\
-      -x "-1200"\
-      -fn "Meslo LG S for Powerline:pixelsize=14:antialias=true:autohint=true" &
-
+dzen2 -w 1400 \
+      -bg '#222222' \
+      -ta r \
+      -x -1400 \
+      -fn "Meslo LG S for Powerline:pixelsize=16:antialias=true:autohint=true" &
 wait;
