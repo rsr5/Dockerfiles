@@ -15,6 +15,8 @@ fi
 
 for i in `find $1 -type f -printf '%p\n' | sort`;
 do
+  track_info=$(eyeD3 --no-color "$i" | egrep "title|artist|album|track");
+  message topic/message $track_info;
   mplayer -slave -input file="$FIFO" "$i";
   if [ $? -ne 0 ]; then
     exit;
