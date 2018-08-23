@@ -1,0 +1,9 @@
+#!/usr/bin/python2.7
+import sys
+
+import eyed3
+
+audiofile = eyed3.load(sys.argv[1])
+print(audiofile.tag.title)
+print(audiofile.tag.album)
+print(audiofile.tag.artist)
