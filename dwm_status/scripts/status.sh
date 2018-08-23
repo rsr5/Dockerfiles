@@ -5,9 +5,9 @@ if [ ! -f /var/run/key_presses/today ]; then
 fi
 
 # Start the mqtt server that listens for messages that should be sent to dzen2
-python /bin/server.py &
+python2.7 /bin/server.py mqtt &
 
-conky -c ~/.conkydwmstatus | \
+conky -c ~/.conkydwmstatus 2>> /dev/null | \
 dzen2 -w 1400 \
       -bg '#222222' \
       -ta r \

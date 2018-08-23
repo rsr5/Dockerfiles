@@ -8,7 +8,7 @@ import paho.mqtt.client as mqtt
 # This is the Publisher
 
 client = mqtt.Client()
-client.connect("localhost", 1883, 60)
+client.connect("mqtt", 1883, 60)
 
 lines = sys.stdin.readlines()
 if len(lines) == 0:
@@ -16,7 +16,7 @@ if len(lines) == 0:
     msg = ''
 else:
     title = lines[0]
-    msg = ''.join(lines[1:])
+    msg = ''.join(lines[1:]).strip()
 
 client.publish(
     sys.argv[1],
@@ -24,7 +24,7 @@ client.publish(
         {
             'width': 400,
             'height': 17,
-            'timeout': 3,
+            'timeout': 1,
             'title': base64.b64encode(title),
             'msg': base64.b64encode(msg)
         }
