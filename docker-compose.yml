@@ -35,6 +35,12 @@ services:
       args:
         image: dx-emulator-environment
     image: tmux
+  tmux-ol6:
+    build:
+      context: tmux
+      args:
+        image: at-ol6-base
+    image: tmux-ol6
   xterm:
     build: xterm
     image: xterm

@@ -4,19 +4,18 @@ FROM ${image}
 RUN useradd -u 210337 -G 9999 robin
 COPY yum.conf /etc/yum.conf
 
-COPY repos.d/* /etc/yum.repos.d/
+COPY repos.d /root/repos.d
 RUN mkdir /root/pkgs.d/
-COPY pkgs.d/* /root/pkgs.d/
-COPY yum.sh /root/
-RUN /root/yum.sh
+COPY pkgs.d /root/pkgs.d/
+COPY packaging.sh /root/
+RUN /root/packaging.sh
 
-RUN pip install -U pip flake8 flake8-colors flake8-comprehensions flake8-docstrings \
-                flake8-import-order pep8-naming==0.5.0 virtualenv
+RUN pip install flake8 flake8-colors flake8-comprehensions flake8-docstrings \
+                flake8-import-order pep8-naming==0.5.0
 
 RUN wget -O /usr/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
     chmod 755 /usr/bin/jq
-RUN npm i npm@latest -g && npm install -g jshint && npm install -g @oracle/ojet-cli@4.0.0
-RUN chsh -s /usr/bin/zsh robin
+RUN chsh -s /bin/zsh robin
 
 RUN wget -O /usr/bin/dumb-init \
          https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 && \
