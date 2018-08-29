@@ -2,6 +2,7 @@
 
 exec docker run --rm -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
-                -v /home/oracle:/home/robin \
+                -v /home/oracle/.thunderbird:/home/robin/.thunderbird \
+                -v /home/oracle/Downloads:/home/robin/Downloads \
                 --network=host \
                 thunderbird -no-remote
