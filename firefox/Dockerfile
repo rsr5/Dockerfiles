@@ -1,15 +1,20 @@
 FROM oraclelinux:7-slim
 RUN useradd -u 210337 robin
-RUN yum install -y firefox
-RUN yum -y install http://linuxdownload.adobe.com/linux/x86_64//adobe-release-x86_64-1.0-1.noarch.rpm && \
-    yum install -y flash-plugin alsa-plugins-pulseaudio libcurl dbus adwaita-gtk2-theme \
-    dejavu-fonts-common dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
-    liberation-fonts-common liberation-mono-fonts liberation-narrow-fonts \
-    liberation-sans-fonts liberation-serif-fonts
+
+RUN yum install -y \
+         tar bzip2 alsa-plugins-pulseaudio dbus gtk3 dbus-glib libXt \
+         dejavu-fonts-common dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
+         liberation-fonts-common liberation-mono-fonts liberation-narrow-fonts \
+         liberation-serif-fonts liberation-sans-fonts && \
+    curl https://download-installer.cdn.mozilla.net/pub/firefox/releases/62.0.3/linux-x86_64/en-US/firefox-62.0.3.tar.bz2 \
+         -o firefox-62.0.3.tar.bz2 && \
+    tar xvf firefox-62.0.3.tar.bz2 && \
+    mv firefox /opt/firefox && \
+    rm firefox-62.0.3.tar.bz2
 COPY local.conf /etc/fonts/local.conf
 RUN mkdir /var/run/dbus/
 RUN chown robin /var/run/dbus
 ENV LANG en-GB
 ENV PULSE_SERVER tcp:127.0.0.1:4713
 USER robin
-CMD /usr/bin/dbus-daemon --system --fork && /usr/bin/firefox -no-remote -P
+CMD /usr/bin/dbus-daemon --system --fork && /opt/firefox/firefox -no-remote -P
