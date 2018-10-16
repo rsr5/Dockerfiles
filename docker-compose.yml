@@ -35,6 +35,15 @@ services:
       args:
         image: dx-emulator-environment
     image: tmux
+  sshd:
+    build: sshd
+    image: sshd
+    depends_on:
+      - tmux
+    ports:
+      - "2222:22"
+    volumes:
+      - "/home/oracle:/home/robin"
   tmux-ol6:
     build:
       context: tmux
