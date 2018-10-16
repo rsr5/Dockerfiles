@@ -11,9 +11,9 @@ COPY local.conf /etc/fonts/local.conf
 USER robin
 
 RUN cd /home/robin && \
-    curl https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/60.0/linux-x86_64/en-GB/thunderbird-60.0.tar.bz2 -o thunderbird-60.0.tar.bz2 && \
-    tar xvf thunderbird-60.0.tar.bz2 && \
-    rm thunderbird-60.0.tar.bz2
+    curl https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/60.2.1/linux-x86_64/en-US/thunderbird-60.2.1.tar.bz2 -o thunderbird-60.2.1.tar.bz2 && \
+    tar xvf thunderbird-60.2.1.tar.bz2 && \
+    rm thunderbird-60.2.1.tar.bz2
 
 ENV LANG en-GB
 ENV TZ Europe/London
