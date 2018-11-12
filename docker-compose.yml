@@ -17,6 +17,9 @@ services:
   firefox:
     build: firefox
     image: firefox
+  libreoffice:
+    build: libreoffice
+    image: libreoffice
   offlineimap:
     build: offlineimap
     image: offlineimap
@@ -44,6 +47,7 @@ services:
       - "2222:22"
     volumes:
       - "/home/oracle:/home/robin"
+    hostname: sshindockeryo
   tmux-ol6:
     build:
       context: tmux
