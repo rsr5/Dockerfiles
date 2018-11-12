@@ -44,7 +44,7 @@ RUN chmod 755 /bin/*.sh /bin/*.py
 ENV LANG en_GB.UTF8
 ENV LANGUAGE en_GB.UTF8
 ENV LC_ALL en_GB.UTF8
-ENV TZ Europe/London
+ENV TZ US/Eastern 
 
 RUN /bin/install_fonts.sh
 
