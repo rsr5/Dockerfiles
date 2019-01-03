@@ -9,7 +9,7 @@ if grep 'VERSION="7.5"' /etc/os-release; then
                  --enablerepo ol7_software_collections \
                  --enablerepo ol7_optional_latest \
                   `cat /root/pkgs.d/ol7/*`
-  npm i npm@latest -g && npm install -g jshint && npm install -g @oracle/ojet-cli@4.0.0
+npm install -g jshint && npm install -g @oracle/oraclejet@6.0.1 @oracle/ojet-cli@6.0.0
   pip install -U pip
 else
   yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
