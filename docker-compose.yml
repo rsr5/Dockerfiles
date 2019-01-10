@@ -15,7 +15,11 @@ services:
       - "/home/robin/code/dotfiles/.conkydwmstatus:/home/robin/.conkydwmstatus"
       - "/var/run/key_presses:/var/run/key_presses"
   firefox:
-    build: firefox
+    build:
+      context: firefox
+      args:
+        firefox_version: "64.0.2"
+        firefox_locale: "en-GB"
     image: firefox
   libreoffice:
     build: libreoffice
