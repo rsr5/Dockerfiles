@@ -18,7 +18,7 @@ services:
     build:
       context: firefox
       args:
-        firefox_version: "64.0.2"
+        firefox_version: "65.0"
         firefox_locale: "en-GB"
     image: firefox
   libreoffice:
