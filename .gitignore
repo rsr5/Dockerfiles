@@ -1,3 +1,4 @@
 *.swp
 bin/uatfirefox
 prodfirefox
+.firefox_version
