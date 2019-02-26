@@ -19,6 +19,6 @@ if [[ ${CURRENT_VERSION} != ${FIREFOX_VERSION} ]]; then
   curl -s \
     --form-string "token=${PO_TOKEN}" \
     --form-string "user=${PO_USER}" \
-    --form-string "message=Upgraded Firefox to ${FIREFOX_VERSION}.  Restart the container." \
+    --form-string "message=Upgraded Firefox to ${FIREFOX_VERSION} from ${CURRENT_VERSION}.  Restart the container." \
       https://api.pushover.net/1/messages.json
 fi
