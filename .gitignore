@@ -2,3 +2,4 @@
 bin/uatfirefox
 prodfirefox
 .firefox_version
+bin/cvsim
