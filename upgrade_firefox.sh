@@ -15,6 +15,7 @@ echo current = ${CURRENT_VERSION} and latest is ${FIREFOX_VERSION}
 echo ${FIREFOX_VERSION} > /home/robin/.firefox_version
 
 if [[ ${CURRENT_VERSION} != ${FIREFOX_VERSION} ]]; then
+  cd /home/robin/code/Dockerfiles/
   docker-compose build --build-arg firefox_version=${FIREFOX_VERSION} firefox
   curl -s \
     --form-string "token=${PO_TOKEN}" \
