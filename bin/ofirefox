@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/bin/bash -x
 
-exec docker run --rm -e DISPLAY=$DISPLAY \
+exec podman run --rm -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
                 -v /home/oracle:/home/robin \
                 --network=host \
                 --shm-size 2g \
                 --name ofirefox \
-                firefox
+                --userns=keep-id \
+                localhost/firefox
