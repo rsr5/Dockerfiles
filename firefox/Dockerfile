@@ -1,5 +1,5 @@
 FROM oraclelinux:7-slim
-RUN useradd -u 210337 robin
+RUN useradd -u 1000 robin
 
 ARG firefox_version
 ARG firefox_locale
