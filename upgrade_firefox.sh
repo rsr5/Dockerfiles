@@ -4,19 +4,25 @@ URL=https://download.mozilla.org/\?product\=firefox-latest-ssl\&amp\;os\=linux\&
 
 FIREFOX_VERSION=$(\
   curl ${URL} 2> /dev/null | \
-  egrep -o '[0-9]{2,}.[0-9]{1,}.[0-9]{1,}' | \
+  grep -Po '(?<=releases/)[^\/]+' | \
   tail -1
 )
 
-CURRENT_VERSION=$(cat /home/robin/.firefox_version 2> /dev/null || echo none)
+CURRENT_VERSION=$(cat /home/roridler/.firefox_version 2> /dev/null || echo none)
+
+BASEDIR=$(dirname "$0")
 
 echo current = ${CURRENT_VERSION} and latest is ${FIREFOX_VERSION}
 
-echo ${FIREFOX_VERSION} > /home/robin/.firefox_version
+echo ${FIREFOX_VERSION} > /home/roridler/.firefox_version
 
 if [[ ${CURRENT_VERSION} != ${FIREFOX_VERSION} ]]; then
-  cd /home/robin/code/Dockerfiles/
-  docker-compose build --build-arg firefox_version=${FIREFOX_VERSION} firefox
+  cd $BASEDIR
+  podman build -t firefox \
+               -f firefox/Dockerfile \
+               --build-arg firefox_version=${FIREFOX_VERSION} \
+               --build-arg firefox_locale=en-GB \
+               firefox
   curl -s \
     --form-string "token=${PO_TOKEN}" \
     --form-string "user=${PO_USER}" \
