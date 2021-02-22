@@ -5,7 +5,7 @@ ARG firefox_version
 ARG firefox_locale
 
 RUN yum install -y \
-         tar bzip2 alsa-plugins-pulseaudio dbus gtk3 dbus-glib libXt \
+         tar bzip2 pulseaudio dbus gtk3 dbus-glib libXt \
          dejavu-fonts-common dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
          liberation-fonts-common liberation-mono-fonts liberation-narrow-fonts \
          liberation-serif-fonts liberation-sans-fonts
