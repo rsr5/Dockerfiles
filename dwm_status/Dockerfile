@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-RUN useradd -u 210337 robin
+RUN useradd -u 1000 robin
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
@@ -50,7 +50,6 @@ RUN /bin/install_fonts.sh
 
 # Run as me.
 USER robin
-
 
 ENTRYPOINT [ "/usr/bin/dumb-init", "-c", "--" ]
 CMD [ "/bin/status.sh" ]
