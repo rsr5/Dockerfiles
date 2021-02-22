@@ -1,16 +1,13 @@
 #!/bin/bash -xe
 
-if grep 'VERSION="7.5"' /etc/os-release; then
+if grep 'VERSION="8.2"' /etc/os-release; then
   cp /root/repos.d/ol7/* /etc/yum.repos.d/
-  yum install -y --enablerepo mcepl-vim8 \
-                 --enablerepo ol7_developer_nodejs8 \
-                 --enablerepo ol7_developer_EPEL \
-                 --enablerepo flatcap-neomutt \
-                 --enablerepo ol7_software_collections \
-                 --enablerepo ol7_optional_latest \
+  dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+  #/usr/bin/ol_yum_configure.sh
+  dnf install -y --enablerepo epel \
                   `cat /root/pkgs.d/ol7/*`
-npm install -g jshint && npm install -g @oracle/oraclejet@6.0.1 @oracle/ojet-cli@6.0.0
-  pip install -U pip
+  npm install -g jshint && npm install -g @oracle/oraclejet@9.0.0 @oracle/ojet-cli@9.0.0
+  pip3 install -U pip astor
 else
   yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
   yum install -y `cat /root/pkgs.d/ol6/*`

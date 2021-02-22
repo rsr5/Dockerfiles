@@ -1,1 +1,1 @@
-util-linux sudo openssh man man-pages
+util-linux sudo openssh man man-pages util-linux-user ncurses-compat-libs

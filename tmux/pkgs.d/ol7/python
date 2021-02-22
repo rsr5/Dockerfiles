@@ -1,1 +1,1 @@
-python-devel python2-pip rh-python36 python-tox
+python2-devel python2-pip python3 python36 python36-devel
