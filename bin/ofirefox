@@ -5,6 +5,6 @@ exec podman run --rm -e DISPLAY=$DISPLAY \
                 -v /home/oracle:/home/robin \
                 --network=host \
                 --shm-size 2g \
-                --name ofirefox \
+                --name ofirefox1 \
                 --userns=keep-id \
                 localhost/firefox
