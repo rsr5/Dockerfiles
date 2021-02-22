@@ -18,7 +18,7 @@ services:
     build:
       context: firefox
       args:
-        firefox_version: "65.0"
+        firefox_version: "72.0.2"
         firefox_locale: "en-GB"
     image: firefox
   libreoffice:
@@ -40,7 +40,7 @@ services:
     build:
       context: tmux
       args:
-        image: dx-emulator-environment
+        image: oraclelinux:7-slim
     image: tmux
   sshd:
     build: sshd
