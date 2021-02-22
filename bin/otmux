@@ -4,6 +4,6 @@ exec /usr/local/bin/st podman run --rm -it -e DISPLAY=$DISPLAY \
                    -v /tmp/.X11-unix:/tmp/.X11-unix \
                    -v /home/oracle:/home/robin \
                    --network=host \
-                   --name=workstation \
+                   --name=otmux1 \
                    --userns=keep-id \
                    tmux
